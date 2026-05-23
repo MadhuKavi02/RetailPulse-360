@@ -46,17 +46,15 @@ recommendations.
 ---
 ## Project Structure
 
+```text
 RetailPulse/
 │
 ├── Data Generation
-│
-├── Data Cleaning - Python    
-│
+├── Data Cleaning - Python
 ├── SQL Analysis
-│
 ├── Power BI
-│
-├── Documentation
+└── Documentation
+```
 
 ## Dataset
 
