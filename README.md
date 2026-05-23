@@ -44,6 +44,19 @@ recommendations.
 | Visualization | Power BI Desktop — DAX, Power Query |
 
 ---
+## Project Structure
+
+RetailPulse/
+│
+├── Data Generation
+│
+├── Data Cleaning - Python    
+│
+├── SQL Analysis
+│
+├── Power BI
+│
+├── Documentation
 
 ## Dataset
 
@@ -74,8 +87,7 @@ Each table had intentional data quality issues —
 
 **Techniques applied:**
 Multi-format date parsing, Regex symbol removal, Dictionary mapping 
-standardization, IQR outlier capping, Median imputation grouped by segment, 
-MinMax and Z-Score normalization, Label and One-Hot encoding
+standardization, IQR outlier capping, Median imputation grouped by segment
 
 ---
 
@@ -101,7 +113,7 @@ MinMax and Z-Score normalization, Label and One-Hot encoding
 
 ---
 
-## Power BI Dashboard — 5 Pages
+## Power BI Dashboard — 4 Pages
 
 **Page 1 — Executive Summary**
 KPI cards, monthly trend line, revenue by city map, category bar chart
@@ -117,8 +129,6 @@ Revenue by segment, acquisition channel analysis, payment distribution
 Partner performance matrix with color coding, failure reason analysis, 
 delay trend line
 
-**Page 5 — Key Insights and Recommendations**
-Written business findings and actionable recommendations
 
 ---
 
@@ -152,8 +162,6 @@ On Time Delivery % = DIVIDE(SUM(Deliveries[On_Time_Flag]),
 - 7,259 orphan Product IDs limit product-level analysis
 - No predictive analytics or forecasting included
 - No real-time data pipeline — manual refresh required
-- Gross margin analysis only — overhead costs not included
-
 ---
 
 ## Author
