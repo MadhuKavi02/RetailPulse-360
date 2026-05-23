@@ -59,4 +59,107 @@ quality issues for realistic cleaning practice.
 
 ---
 
-## Project Structure
+---
+
+## Data Cleaning Highlights
+
+Each table had intentional data quality issues —
+
+- Mixed date formats — 5 different formats in same column
+- Currency symbols in price columns — ₹, Rs., INR
+- Inconsistent city names — Mumbai, mumbai, Bombay, MUMBAI
+- Invalid values — negative ages, ratings above 5
+- Duplicate rows and blank rows
+- Orphan Product IDs — 7,259 orders reference archived products
+
+**Techniques applied:**
+Multi-format date parsing, Regex symbol removal, Dictionary mapping 
+standardization, IQR outlier capping, Median imputation grouped by segment, 
+MinMax and Z-Score normalization, Label and One-Hot encoding
+
+---
+
+## SQL Analysis — 15 Business Queries
+
+| Query | Business Question | SQL Concept |
+|---|---|---|
+| Q1 | Overall revenue, profit, margin | Basic aggregation |
+| Q2 | Monthly revenue trend | DATE functions + GROUP BY |
+| Q3 | Month over month growth | LAG window function |
+| Q4 | Category performance | Multiple aggregations |
+| Q5 | Top 10 profitable products | TOP + JOIN + ORDER BY |
+| Q6 | Bottom 10 loss-making products | DENSE_RANK |
+| Q7 | Discount impact on profit | CASE WHEN ranges |
+| Q8 | Customer segmentation by spend | NTILE |
+| Q9 | City wise performance | GROUP BY + RANK |
+| Q10 | Payment mode analysis | Conditional aggregation |
+| Q11 | Delivery partner performance | Multi-table JOIN |
+| Q12 | Festive vs non-festive | CASE WHEN + GROUP BY |
+| Q13 | Running revenue total | SUM OVER |
+| Q14 | At-risk customer identification | DATEDIFF + subquery |
+| Q15 | Category risk classification | CTE + CASE WHEN |
+
+---
+
+## Power BI Dashboard — 5 Pages
+
+**Page 1 — Executive Summary**
+KPI cards, monthly trend line, revenue by city map, category bar chart
+
+**Page 2 — Discount Impact Analysis**
+Scatter plot showing discount vs profit correlation, bar chart by 
+discount range, matrix with conditional formatting
+
+**Page 3 — Customer Intelligence**
+Revenue by segment, acquisition channel analysis, payment distribution
+
+**Page 4 — Delivery Operations**
+Partner performance matrix with color coding, failure reason analysis, 
+delay trend line
+
+**Page 5 — Key Insights and Recommendations**
+Written business findings and actionable recommendations
+
+---
+
+## DAX Measures Created
+
+```dax
+Total Revenue = SUM(Orders[Final_Amount])
+Total Profit = SUM(Orders[Profit])
+Profit Margin % = DIVIDE([Total Profit], [Total Revenue]) * 100
+Return Rate % = DIVIDE(SUM(Orders[Is_Returned]), COUNT(Orders[Order_ID])) * 100
+On Time Delivery % = DIVIDE(SUM(Deliveries[On_Time_Flag]), 
+                     COUNT(Deliveries[Delivery_ID])) * 100
+```
+
+---
+
+## Business Recommendations
+
+1. Cap Electronics discounts at 20% maximum
+2. Terminate or renegotiate DTDC partnership immediately
+3. Prioritize express delivery for Fashion category
+4. Launch re-engagement campaign for 216 at-risk customers
+5. Build festive season inventory strategy from August onwards
+6. Implement minimum 5% profit margin threshold per order
+
+---
+
+## Project Limitations
+
+- Synthetic dataset — not real company data
+- 7,259 orphan Product IDs limit product-level analysis
+- No predictive analytics or forecasting included
+- No real-time data pipeline — manual refresh required
+- Gross margin analysis only — overhead costs not included
+
+---
+
+## Author
+
+**Madhumitha Mathivanan**
+Data Analyst | SQL | Python | Power BI
+www.linkedin.com/in/madhumithamathi07
+
+---
