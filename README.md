@@ -127,6 +127,20 @@ Revenue by segment, acquisition channel analysis, payment distribution
 Partner performance matrix with color coding, failure reason analysis, 
 delay trend line
 
+## Recent Updates
+**Page 5 — Time Intelligence**
+Implemented Revenue YTD, MoM and YoY measures.
+
+**Page 6 — Category Detail**
+- Dynamic title using SELECTEDVALUE function
+- Shows category specific:
+  → Total Revenue, Profit, Orders, Return Rate
+  → Revenue Trend 2023 vs 2024
+  → Profit Margin by Discount Range
+  → Revenue by City
+  → Top 10 Products by Profit
+- Accessible by right clicking any 
+  category in Executive Summary
 
 ---
 
@@ -139,9 +153,48 @@ Profit Margin % = DIVIDE([Total Profit], [Total Revenue]) * 100
 Return Rate % = DIVIDE(SUM(Orders[Is_Returned]), COUNT(Orders[Order_ID])) * 100
 On Time Delivery % = DIVIDE(SUM(Deliveries[On_Time_Flag]), 
                      COUNT(Deliveries[Delivery_ID])) * 100
+Revenue YTD = 
+TOTALYTD([Total Revenue], Date_Table[Date])
+
+Revenue Previous Month = 
+CALCULATE(
+    [Total Revenue],
+    PREVIOUSMONTH(Date_Table[Date])
+)
+
+MoM Revenue Growth % = 
+DIVIDE(
+    [Total Revenue] - [Revenue Previous Month],
+    [Revenue Previous Month]
+) * 100
+
+YoY Revenue Growth % = 
+DIVIDE(
+    [Total Revenue] - [Revenue Last Year],
+    [Revenue Last Year]
+) * 100
+
+Dynamic_Category_Title = 
+"Category Detail Analysis - " & 
+SELECTEDVALUE(Orders[Category], "All Categories")
 ```
 
 ---
+## Row Level Security section
+Static RLS:
+- Created city level roles for all 6 cities
+- Mumbai, Delhi, Chennai, Bangalore, 
+  Hyderabad, Pune managers
+- Validated using View As Role feature
+
+Dynamic RLS:
+- Created User_City_Mapping table
+- Implemented USERPRINCIPALNAME() function
+- Tested with fake emails per city
+- Automatically filters data based on 
+  logged in user
+
+  ---
 
 ## Business Recommendations
 
