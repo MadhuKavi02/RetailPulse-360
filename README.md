@@ -230,5 +230,3 @@ Junior Data Engineer → Aspiring Data Analyst
 ---
 
 
-*RetailPulse 360 — Built to demonstrate end-to-end data analytics capability*
-*September 2026*
