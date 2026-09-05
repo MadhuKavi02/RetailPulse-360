@@ -218,25 +218,6 @@ SWITCH(TRUE(),
 
 ---
 
-## 📂 How to Use This Project
-
-**1. Python — Data Generation and Cleaning**
-```bash
-pip install pandas numpy
-python python/01_data_generation.py
-python python/02_data_cleaning.py
-```
-
-**2. SQL Server — Load and Query**
-- Load the cleaned CSV files from `data/clean/` into SQL Server
-- Run queries from `sql/retailpulse_queries.sql`
-
-**3. Power BI — Open Report**
-- Open `powerbi/RetailPulse360.pbix` in Power BI Desktop
-- Refresh data connection pointing to your SQL Server instance
-
----
-
 ## 👩‍💻 About
 
 **Madhumitha Mathivanan**
@@ -245,14 +226,9 @@ Junior Data Engineer → Aspiring Data Analyst
 - 🎓 M.Sc Data Science — SASTRA University
 - 💼 1+ year experience in data validation and SQL — DocIT SYRL India
 - 🛠️ Skills — SQL Server, Power BI, Python (Pandas), Excel
-
+- www.linkedin.com/in/madhumithamathi07
 ---
 
-## 📄 Documentation
-
-Full project documentation including data architecture, feature engineering details, SQL design principles, and analytical findings is available in `docs/RetailPulse360_Documentation.docx`
-
----
 
 *RetailPulse 360 — Built to demonstrate end-to-end data analytics capability*
 *September 2026*
