@@ -1,224 +1,285 @@
-# RetailPulse — 360° E-Commerce Intelligence Platform
+# 🛒 RetailPulse 360 — E-Commerce Intelligence System
 
-## KartZone India Pvt. Ltd. | End-to-End Analytics Project
-
-![Tools](https://img.shields.io/badge/Tools-Python%20%7C%20SQL%20Server%20%7C%20Power%20BI-blue)
-![Status](https://img.shields.io/badge/Status-Completed-green)
+> **End-to-end portfolio analytics project simulating an Indian e-commerce business using Python, SQL Server, and Power BI.**
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-RetailPulse is a complete end-to-end data analytics project built for a 
-fictional Indian e-commerce company — KartZone India Pvt. Ltd. The project 
-covers the full analytics pipeline from synthetic data generation and cleaning 
-to SQL analysis and interactive Power BI dashboarding.
+RetailPulse 360 is a complete Data Analyst portfolio project built around a fictional Indian e-commerce retailer — **KartZone India** — operating across six cities with four product categories.
 
-**Business Problem:** KartZone India is generating strong revenue but profit 
-margins are shrinking. The goal is to identify why — and give actionable 
-recommendations.
+The core business question driving this project:
 
----
+> *"The business is generating strong revenue — but why is profit not growing at the same pace? Where is the money leaking?"*
 
-## Key Findings
-
-- Orders with discount above 20% generate negative profit margins — 
-  especially in Electronics
-- DTDC delivery partner has 0% on-time delivery rate across all cities
-- Festive season (Oct-Nov-Dec) drives 44% of annual revenue in 3 months
-- Fashion returns increase significantly when delivery exceeds 5 days
-- Top 20% of customers generate 65% of total revenue
-- 1,791 loss-making orders identified — concentrated in high-discount 
-  Electronics
+The project answers this question through a full analytics workflow — from raw messy data to validated SQL analysis to an interactive six-page Power BI dashboard.
 
 ---
 
-## Tech Stack
+## 🛠️ Technology Stack
 
-| Layer | Tools Used |
-|---|---|
-| Data Generation | Python — Faker, NumPy, Pandas, Random |
-| Data Cleaning | Python — Pandas, NumPy, Regex, Sklearn |
-| Data Storage | Microsoft SQL Server — SSMS |
-| SQL Analysis | T-SQL — Window Functions, CTEs, Joins |
-| Visualization | Power BI Desktop — DAX, Power Query |
+| Tool | Purpose |
+|------|---------|
+| **Python** (Pandas, NumPy) | Data generation, cleaning, validation, feature engineering |
+| **SQL Server** | Structured business analysis — 15 analytical queries |
+| **Power BI Desktop** | Interactive six-page dashboard with advanced DAX |
 
 ---
-## Project Structure
 
-```text
-RetailPulse/
+## 📁 Project Structure
+
+```
+RetailPulse360/
 │
-├── Data Generation
-├── Data Cleaning - Python
-├── SQL Analysis
-├── Power BI
-└── Documentation
+├── 📂 data/
+│   ├── raw/                    # Original generated CSV files with intentional quality issues
+│   └── clean/                  # Validated analytical tables loaded into SQL Server
+│
+├── 📂 python/
+│   ├── 01_data_generation.py   # Dataset generation with controlled quality issues
+│   └── 02_data_cleaning.py     # Cleaning, validation, and feature engineering
+│
+├── 📂 sql/
+│   └── retailpulse_queries.sql # 15 business SQL queries
+│
+├── 📂 powerbi/
+│   └── RetailPulse360.pbix     # Power BI report file
+│
+├── 📂 docs/
+│   └── RetailPulse360_Documentation.docx  # Full project documentation
+│
+└── README.md
 ```
 
-## Dataset
+---
 
-Synthetically generated using Python — 4 tables with intentional data 
-quality issues for realistic cleaning practice.
+## 📊 Dataset Summary
 
-| Table | Raw Rows | Clean Rows | Key Columns |
-|---|---|---|---|
-| Customers | 1,035 | 1,000 | Customer_ID, Segment, City, Registration_Source |
-| Products | 825 | 800 | Product_ID, Category, MRP, Cost_Price, Discount_Pct |
-| Orders | 10,170 | 9,791 | Order_ID, Final_Amount, Profit, Order_Status |
-| Deliveries | 10,115 | 9,791 | Delivery_Partner, Delay_Days, On_Time_Flag |
+| Table | Rows | Description |
+|-------|------|-------------|
+| Customers | 1,000 | Customer profiles, segments, acquisition channels, activity |
+| Products | 800 | Product catalogue, pricing, categories, ratings, stock |
+| Orders | 9,598 | Order-level revenue, profit, discounts, status |
+| Deliveries | 9,598 | Delivery partner, timing, cost, failure, ratings |
+
+**Coverage:** Six cities — Mumbai, Delhi, Chennai, Bangalore, Hyderabad, Pune
+**Period:** 2023 – 2024
+**Categories:** Electronics, Fashion, Home & Kitchen, Beauty
 
 ---
 
----
+## 🔄 End-to-End Pipeline
 
-## Data Cleaning Highlights
-
-Each table had intentional data quality issues —
-
-- Mixed date formats — 5 different formats in same column
-- Currency symbols in price columns — ₹, Rs., INR
-- Inconsistent city names — Mumbai, mumbai, Bombay, MUMBAI
-- Invalid values — negative ages, ratings above 5
-- Duplicate rows and blank rows
-- Orphan Product IDs — 7,259 orders reference archived products
-
-**Techniques applied:**
-Multi-format date parsing, Regex symbol removal, Dictionary mapping 
-standardization, IQR outlier capping, Median imputation grouped by segment
+```
+Raw CSVs
+    ↓
+Python — Data Cleaning & Feature Engineering
+    ↓
+SQL Server — Business Analysis (15 Queries)
+    ↓
+Power BI — Interactive Dashboard (6 Pages)
+    ↓
+Findings & Recommendations
+```
 
 ---
 
-## SQL Analysis — 15 Business Queries
+## 🐍 Phase 1 — Python: Data Cleaning & Feature Engineering
 
-| Query | Business Question | SQL Concept |
-|---|---|---|
-| Q1 | Overall revenue, profit, margin | Basic aggregation |
-| Q2 | Monthly revenue trend | DATE functions + GROUP BY |
-| Q3 | Month over month growth | LAG window function |
-| Q4 | Category performance | Multiple aggregations |
-| Q5 | Top 10 profitable products | TOP + JOIN + ORDER BY |
-| Q6 | Bottom 10 loss-making products | DENSE_RANK |
-| Q7 | Discount impact on profit | CASE WHEN ranges |
-| Q8 | Customer segmentation by spend | NTILE |
-| Q9 | City wise performance | GROUP BY + RANK |
-| Q10 | Payment mode analysis | Conditional aggregation |
-| Q11 | Delivery partner performance | Multi-table JOIN |
-| Q12 | Festive vs non-festive | CASE WHEN + GROUP BY |
-| Q13 | Running revenue total | SUM OVER |
-| Q14 | At-risk customer identification | DATEDIFF + subquery |
-| Q15 | Category risk classification | CTE + CASE WHEN |
+### Data Quality Issues Handled
+- Blank and duplicate rows
+- Mixed capitalisation and spelling variations in categorical fields
+- Mixed date formats and parsing issues
+- Currency strings and numeric conversion problems
+- Invalid numeric ranges (ratings outside 1–5 scale)
+- Logical inconsistencies between status fields and flag columns
+- Foreign-key validation between Orders and Customers/Products
 
----
+### Feature Engineering Highlights
 
-## Power BI Dashboard — 4 Pages
+**Customer Features**
+- `Churn_Flag` — 1 when customer segment is Churned or At-Risk
+- `Is_Dormant` — 1 when Days_Since_Login > 90
+- `Age_Group` — 18–25 / 26–35 / 36–45 / 46+
+- `Tenure_Band` — New / Growing / Established / Loyal
 
-**Page 1 — Executive Summary**
-KPI cards, monthly trend line, revenue by city map, category bar chart
+**Order Features**
+- `Is_Festive_Season` — 1 for October–December orders
+- `Is_Loss_Order` — 1 when Profit < 0
+- `Order_Value_Band` — Low / Medium / High / Premium
+- `High_Discount_Flag` — 1 when Discount_Pct > 20%
 
-**Page 2 — Discount Impact Analysis**
-Scatter plot showing discount vs profit correlation, bar chart by 
-discount range, matrix with conditional formatting
-
-**Page 3 — Customer Intelligence**
-Revenue by segment, acquisition channel analysis, payment distribution
-
-**Page 4 — Delivery Operations**
-Partner performance matrix with color coding, failure reason analysis, 
-delay trend line
-
-## Recent Updates
-**Page 5 — Time Intelligence**
-Implemented Revenue YTD, MoM and YoY measures.
-
-**Page 6 — Category Detail**
-- Dynamic title using SELECTEDVALUE function
-- Shows category specific:
-  → Total Revenue, Profit, Orders, Return Rate
-  → Revenue Trend 2023 vs 2024
-  → Profit Margin by Discount Range
-  → Revenue by City
-  → Top 10 Products by Profit
-- Accessible by right clicking any 
-  category in Executive Summary
+**Delivery Features**
+- `On_Time_Flag` — 1 when Delay_Days <= 0
+- `Delay_Severity` — Early / On Time / Slightly / Moderately / Severely Delayed
+- `Partner_Reliability_Score` — Partner-level on-time rate × 100
 
 ---
 
-## DAX Measures Created
+## 🗄️ Phase 2 — SQL Server: Business Analysis
 
-```dax
-Total Revenue = SUM(Orders[Final_Amount])
-Total Profit = SUM(Orders[Profit])
-Profit Margin % = DIVIDE([Total Profit], [Total Revenue]) * 100
-Return Rate % = DIVIDE(SUM(Orders[Is_Returned]), COUNT(Orders[Order_ID])) * 100
-On Time Delivery % = DIVIDE(SUM(Deliveries[On_Time_Flag]), 
-                     COUNT(Deliveries[Delivery_ID])) * 100
-Revenue YTD = 
-TOTALYTD([Total Revenue], Date_Table[Date])
+15 business queries written around real analytical questions.
 
-Revenue Previous Month = 
-CALCULATE(
-    [Total Revenue],
-    PREVIOUSMONTH(Date_Table[Date])
+| No. | Business Question | Technique |
+|-----|-------------------|-----------|
+| Q1 | Overall revenue, profit, margin, return and cancellation rates | SUM, COUNT, percentage calculations |
+| Q2 | Monthly revenue and profit trend across years | GROUP BY, date functions |
+| Q3 | Month-over-month revenue growth | LAG(), window functions |
+| Q4 | Category performance — revenue, profit, return rate | GROUP BY, KPI calculations |
+| Q5 | Top 10 most profitable products | TOP, JOIN, aggregation |
+| Q6 | Products causing the highest losses | HAVING, DENSE_RANK(), CTE |
+| Q7 | How discounts affect margins and loss orders | CASE WHEN, CTE, segmentation |
+| Q8 | Revenue contribution by customer segment | JOIN, GROUP BY, window functions |
+| Q9 | City-wise revenue and profit margin | RANK(), GROUP BY |
+| Q10 | Payment mode cancellation and order value | GROUP BY, percentage calculations |
+| Q11 | Best and worst delivery partner performance | CTE, RANK(), KPI benchmarking |
+| Q12 | Festive vs non-festive season comparison | CASE WHEN, aggregation |
+| Q13 | When did business cross 50% of annual revenue? | Running total, SUM() OVER, LAG() |
+| Q14 | Customers at risk of churn | DATEDIFF, CTE, behaviour analysis |
+| Q15 | Product category risk classification | Multi-condition CASE WHEN |
+
+---
+
+## 📈 Phase 3 — Power BI Dashboard
+
+Six-page interactive report with slicers, KPI cards, drill-through, and advanced DAX measures.
+
+### Report Pages
+
+| Page | Focus | Key Visuals |
+|------|-------|-------------|
+| **Executive Summary** | Business overview | KPI cards, monthly trend, city revenue, category split |
+| **Discount Impact** | Discount vs profitability | Scatter plot, profit margin matrix, loss order KPIs |
+| **Customer Intelligence** | Customer behaviour | Segment revenue, acquisition channel, top customers |
+| **Delivery Operations** | Partner performance | Matrix with conditional formatting, delay trend |
+| **Time Intelligence** | Period comparison | YTD, YoY, MoM measures, cumulative trend |
+| **Category Detail** | Drill-through analysis | Dynamic title, category KPIs, top 10 products |
+
+### Advanced DAX Measures Used
+
+```
+// Year over Year Growth
+YoY Growth % =
+VAR CurrentYear = SUM(Orders[Revenue])
+VAR LastYear = CALCULATE(SUM(Orders[Revenue]), SAMEPERIODLASTYEAR('Date'[Date]))
+RETURN DIVIDE(CurrentYear - LastYear, LastYear)
+
+// Month over Month Growth
+MoM Growth % =
+VAR CurrentMonth = SUM(Orders[Revenue])
+VAR PrevMonth = CALCULATE(SUM(Orders[Revenue]), DATEADD('Date'[Date], -1, MONTH))
+RETURN DIVIDE(CurrentMonth - PrevMonth, PrevMonth)
+
+// Dynamic Drill-Through Title
+Category Title = "Category Analysis — " & SELECTEDVALUE(Products[Category], "All Categories")
+
+// Product Revenue Rank
+Product Rank = RANKX(ALL(Products[Product_Name]), [Total Revenue], , DESC, DENSE)
+
+// Discount Category Classification
+Discount Category =
+SWITCH(TRUE(),
+    Orders[Discount_Pct] > 30, "Above 30% — Loss Risk",
+    Orders[Discount_Pct] > 20, "20–30% — Low Margin",
+    Orders[Discount_Pct] > 10, "10–20% — Healthy",
+    "Below 10% — Profitable"
 )
-
-MoM Revenue Growth % = 
-DIVIDE(
-    [Total Revenue] - [Revenue Previous Month],
-    [Revenue Previous Month]
-) * 100
-
-YoY Revenue Growth % = 
-DIVIDE(
-    [Total Revenue] - [Revenue Last Year],
-    [Revenue Last Year]
-) * 100
-
-Dynamic_Category_Title = 
-"Category Detail Analysis - " & 
-SELECTEDVALUE(Orders[Category], "All Categories")
 ```
 
----
-## Row Level Security section
-Static RLS:
-- Created city level roles for all 6 cities
-- Mumbai, Delhi, Chennai, Bangalore, 
-  Hyderabad, Pune managers
-- Validated using View As Role feature
-
-Dynamic RLS:
-- Created User_City_Mapping table
-- Implemented USERPRINCIPALNAME() function
-- Tested with fake emails per city
-- Automatically filters data based on 
-  logged in user
-
-  ---
-
-## Business Recommendations
-
-1. Cap Electronics discounts at 20% maximum
-2. Terminate or renegotiate DTDC partnership immediately
-3. Prioritize express delivery for Fashion category
-4. Launch re-engagement campaign for 216 at-risk customers
-5. Build festive season inventory strategy from August onwards
-6. Implement minimum 5% profit margin threshold per order
+### Row Level Security
+- **Static RLS** — City-level roles manually created in Manage Roles
+- **Dynamic RLS** — User mapping table with `USERPRINCIPALNAME()` function for automatic filtering based on login email
 
 ---
 
-## Project Limitations
+## 📋 Key Findings
 
-- Synthetic dataset — not real company data
-- 7,259 orphan Product IDs limit product-level analysis
-- No predictive analytics or forecasting included
-- No real-time data pipeline — manual refresh required
+### 💰 Revenue & Profitability
+- **Total Revenue: ₹311.15M** | **Total Profit: ₹67.03M** | **Profit Margin: 21.54%**
+- Electronics drives **84.7% of total revenue** but has the lowest category margin at **17.65%**
+- **544 loss-making orders (5.7%)** — concentrated in high-discount Electronics transactions
+
+### 🏷️ Discount Impact
+- Electronics profit margin drops sharply beyond 20% discount
+  - 21–30% discount band → **5.36% margin**
+  - Above 30% discount → **6.68% margin**
+- Discounts above 20% on Electronics are strongly associated with negative or near-zero profit
+
+### 👥 Customer Behaviour
+- **331 active customers** | **216 at-risk customers**
+- App is the highest revenue-generating acquisition channel
+- UPI dominates payment mode at **34.56%** of orders
+
+### 🚚 Delivery Performance
+- Overall on-time delivery rate: **21.55%**
+- Amazon Logistics leads at **38.57% on-time**
+- DTDC is the lowest performer at **5.82% on-time** with average delay of **4.20 days**
+- Average customer rating across all partners: **3.36 / 5**
+
+### 📅 Seasonal Patterns
+- Festive season (Oct–Dec) accounts for **43.5% of annual orders**
+- 2024 revenue declined **-2.05% YoY** vs 2023
+
 ---
 
-## Author
+## 💡 Business Recommendations
+
+| Area | Recommendation |
+|------|---------------|
+| **Discount Governance** | Cap Electronics discounts at 20% — above this threshold margins collapse |
+| **Loss Order Review** | Implement monthly review of loss-making orders to separate pricing errors from planned promotions |
+| **Fashion Returns** | Investigate 18.20% return rate at product and reason level before changing assortment |
+| **Delivery Allocation** | Review DTDC allocation — 5.82% on-time rate is critically low |
+| **Customer Retention** | Target 216 at-risk customers with personalised retention campaigns |
+| **Seasonal Planning** | Use festive season pattern to plan inventory, promotions, and delivery capacity ahead of Q4 |
+
+---
+
+## ⚠️ Limitations
+
+- Dataset is **synthetic** — generated for portfolio purposes only, not real company data
+- No 2022 baseline available — 2023 YoY comparison is not possible
+- Profit calculation does not include marketing overhead, warehouse labour, or return-processing costs
+- Delivery partner statistics are simulated — do not represent real carrier performance
+- Scope is descriptive and diagnostic analytics — predictive modelling is outside current scope
+
+---
+
+## 📂 How to Use This Project
+
+**1. Python — Data Generation and Cleaning**
+```bash
+pip install pandas numpy
+python python/01_data_generation.py
+python python/02_data_cleaning.py
+```
+
+**2. SQL Server — Load and Query**
+- Load the cleaned CSV files from `data/clean/` into SQL Server
+- Run queries from `sql/retailpulse_queries.sql`
+
+**3. Power BI — Open Report**
+- Open `powerbi/RetailPulse360.pbix` in Power BI Desktop
+- Refresh data connection pointing to your SQL Server instance
+
+---
+
+## 👩‍💻 About
 
 **Madhumitha Mathivanan**
-Data Analyst | SQL | Python | Power BI
-www.linkedin.com/in/madhumithamathi07
+Junior Data Engineer → Aspiring Data Analyst
+
+- 🎓 M.Sc Data Science — SASTRA University
+- 💼 1+ year experience in data validation and SQL — DocIT SYRL India
+- 🛠️ Skills — SQL Server, Power BI, Python (Pandas), Excel
 
 ---
+
+## 📄 Documentation
+
+Full project documentation including data architecture, feature engineering details, SQL design principles, and analytical findings is available in `docs/RetailPulse360_Documentation.docx`
+
+---
+
+*RetailPulse 360 — Built to demonstrate end-to-end data analytics capability*
+*September 2026*
