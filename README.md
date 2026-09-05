@@ -26,33 +26,6 @@ The project answers this question through a full analytics workflow — from raw
 
 ---
 
-## 📁 Project Structure
-
-```
-RetailPulse360/
-│
-├── 📂 data/
-│   ├── raw/                    # Original generated CSV files with intentional quality issues
-│   └── clean/                  # Validated analytical tables loaded into SQL Server
-│
-├── 📂 python/
-│   ├── 01_data_generation.py   # Dataset generation with controlled quality issues
-│   └── 02_data_cleaning.py     # Cleaning, validation, and feature engineering
-│
-├── 📂 sql/
-│   └── retailpulse_queries.sql # 15 business SQL queries
-│
-├── 📂 powerbi/
-│   └── RetailPulse360.pbix     # Power BI report file
-│
-├── 📂 docs/
-│   └── RetailPulse360_Documentation.docx  # Full project documentation
-│
-└── README.md
-```
-
----
-
 ## 📊 Dataset Summary
 
 | Table | Rows | Description |
