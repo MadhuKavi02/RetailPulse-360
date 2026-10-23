@@ -212,9 +212,7 @@ SWITCH(TRUE(),
 
 - Dataset is **synthetic** — generated for portfolio purposes only, not real company data
 - No 2022 baseline available — 2023 YoY comparison is not possible
-- Profit calculation does not include marketing overhead, warehouse labour, or return-processing costs
 - Delivery partner statistics are simulated — do not represent real carrier performance
-- Scope is descriptive and diagnostic analytics — predictive modelling is outside current scope
 
 ---
 
