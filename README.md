@@ -176,7 +176,7 @@ SWITCH(TRUE(),
 - Electronics profit margin drops sharply beyond 20% discount
   - 21–30% discount band → **5.36% margin**
   - Above 30% discount → **6.68% margin**
-- Discounts above 20% on Electronics are strongly associated with negative or near-zero profit
+- Discounts above 20% on Electronics are strongly associated with very low margin.
 
 ### 👥 Customer Behaviour
 - **331 active customers** | **216 at-risk customers**
