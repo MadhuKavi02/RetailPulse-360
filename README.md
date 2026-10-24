@@ -85,7 +85,6 @@ Findings & Recommendations
 **Delivery Features**
 - `On_Time_Flag` — 1 when Delay_Days <= 0
 - `Delay_Severity` — Early / On Time / Slightly / Moderately / Severely Delayed
-- `Partner_Reliability_Score` — Partner-level on-time rate × 100
 
 ---
 
