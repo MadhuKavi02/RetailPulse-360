@@ -65,7 +65,6 @@ Findings & Recommendations
 - Mixed date formats and parsing issues
 - Currency strings and numeric conversion problems
 - Invalid numeric ranges (ratings outside 1–5 scale)
-- Logical inconsistencies between status fields and flag columns
 - Foreign-key validation between Orders and Customers/Products
 
 ### Feature Engineering Highlights
