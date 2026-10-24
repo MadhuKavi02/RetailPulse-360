@@ -10,7 +10,7 @@ RetailPulse 360 is a complete Data Analyst portfolio project built around a fict
 
 The core business question driving this project:
 
-> *"The business is generating strong revenue — but why is profit not growing at the same pace? Where is the money leaking?"*
+> *"KartZone’s revenue is large but flat, and profit margins are uneven across categories. Where is the money leaking?"*
 
 The project answers this question through a full analytics workflow — from raw messy data to validated SQL analysis to an interactive six-page Power BI dashboard.
 
@@ -150,13 +150,7 @@ Category Title = "Category Analysis — " & SELECTEDVALUE(Products[Category], "A
 Product Rank = RANKX(ALL(Products[Product_Name]), [Total Revenue], , DESC, DENSE)
 
 // Discount Category Classification
-Discount Category =
-SWITCH(TRUE(),
-    Orders[Discount_Pct] > 30, "Above 30% — Loss Risk",
-    Orders[Discount_Pct] > 20, "20–30% — Low Margin",
-    Orders[Discount_Pct] > 10, "10–20% — Healthy",
-    "Below 10% — Profitable"
-)
+Discount Category = SWITCH(TRUE(), Orders[Discount_Pct] > 30, "Above 30%", Orders[Discount_Pct] > 20, "21-30%", Orders[Discount_Pct] > 10, "11-20%", Orders[Discount_Pct] > 0, "1-10%", "0%")
 ```
 
 ### Row Level Security
@@ -197,9 +191,11 @@ SWITCH(TRUE(),
 
 ## 💡 Business Recommendations
 
+Recommendations below are illustrative: they show how the analysis would be used if this were real business data.
+
 | Area | Recommendation |
 |------|---------------|
-| **Discount Governance** | Cap Electronics discounts at 20% — above this threshold margins collapse |
+| **Discount Governance** | Cap Electronics discounts at 20% — above this threshold Electronics margin falls to about 5–7%|
 | **Loss Order Review** | Implement monthly review of loss-making orders to separate pricing errors from planned promotions |
 | **Fashion Returns** | Investigate 18.20% return rate at product and reason level before changing assortment |
 | **Delivery Allocation** | Review DTDC allocation — 5.82% on-time rate is critically low |
@@ -213,6 +209,7 @@ SWITCH(TRUE(),
 - Dataset is **synthetic** — generated for portfolio purposes only, not real company data
 - No 2022 baseline available — 2023 YoY comparison is not possible
 - Delivery partner statistics are simulated — do not represent real carrier performance
+- About 1,663 missing delivery days were filled using partner-based delay assumptions, so the overall on-time rate (21.55%) is conservative. 
 
 ---
 
