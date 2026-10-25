@@ -28,6 +28,8 @@ The project answers this question through a full analytics workflow — from raw
 
 ## 📊 Dataset Summary
 
+Dataset Creation: Generated four synthetic datasets using Python to simulate realistic e-commerce business data for KartZone India Pvt. Ltd.
+
 | Table | Rows | Description |
 |-------|------|-------------|
 | Customers | 1,000 | Customer profiles, segments, acquisition channels, activity |
